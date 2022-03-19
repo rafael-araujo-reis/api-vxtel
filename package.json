@@ -1,12 +1,16 @@
 {
   "name": "api-vxtel",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Node Express VxTel",
+  "author": "Rafael Reis",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/server.js"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC"
 }
