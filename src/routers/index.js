@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 
 const CallPrice = require('../models/CallPrice');
+
 app.use(express.json());
 
 router.get('/', (req, res, next) => {
@@ -13,13 +14,16 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/callprice/originDDD/:originDDD/destinationDDD/:destinationDDD', async (req, res) => {
+router.get('/callprice/originDDD/:originDDD/destinationDDD/:destinationDDD', callPrice);
+
+async function callPrice(req, res) {
 
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
   res.setHeader("Access-Control-Allow-Headers", "content-type");
   res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
+  cors();
 
   const { originDDD, destinationDDD } = req.params;
 
@@ -41,6 +45,6 @@ router.get('/callprice/originDDD/:originDDD/destinationDDD/:destinationDDD', asy
         message: "Erro interno"
       });
     });
-});
+}
 
 module.exports = router;
