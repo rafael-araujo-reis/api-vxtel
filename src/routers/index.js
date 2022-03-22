@@ -1,13 +1,10 @@
 const express = require('express');
-
 const router = express.Router();
+const cors = require('cors');
+const app = express();
 
-router.get('/health', (req, res, next) => {
-  res.status(200).send({
-    title: "API Node Express",
-    version: "0.1.0",
-  });
-});
+const CallPrice = require('../models/CallPrice');
+app.use(express.json());
 
 router.get('/', (req, res, next) => {
   res.status(200).send({
@@ -24,12 +21,26 @@ router.get('/callprice/originDDD/:originDDD/destinationDDD/:destinationDDD', asy
   res.setHeader("Access-Control-Allow-Headers", "content-type");
   res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
 
-  console.log('aqui vou chamar');
-  console.log(req.params);
+  const { originDDD, destinationDDD } = req.params;
 
-  res.status(200).send({
-    priceMinute: 10
-  });
+  await CallPrice.findOne({
+    attributes: ['price_minute'],
+    where: {
+      originDDD,
+      destinationDDD
+    }
+  })
+    .then((data) => {
+      return res.json({
+        data
+      });
+    })
+    .catch(() => {
+      return res.status(500).json({
+        error: true,
+        message: "Erro interno"
+      });
+    });
 });
 
 module.exports = router;
