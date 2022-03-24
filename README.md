@@ -3,6 +3,10 @@
 
 **Objetivo**: Comunicar-se com a entidades externas.
 
+### Tecnologias utilizadas:
+* JavaScript
+* MySQL
+
 _**Developer**: Rafael Araujo Reis_
 
 ---
