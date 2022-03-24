@@ -14,9 +14,9 @@ _**Developer**: Rafael Araujo Reis_
 ## Configuração da base de dados
 Caso não tenha o client do MySQL local, baixe o client [aqui](https://dev.mysql.com/downloads/installer/) e o MySQL Workbench [aqui](https://dev.mysql.com/downloads/workbench/)
 
-Após realizar a instalação configure o nome do usuário e a senha no arquivo .env nas respectivas chaves: **USER_DB** e **KEY_USER_DB**
+Na configuração do usuário root da base de dados, informe a senha 123456
 
-Execute os scripts abaixo disponíveis em [api-vxtel/sql](./sql/):
+Abra o Workbench e execute os scripts abaixo disponíveis em [api-vxtel/sql](./sql/):
 - [01-CreateDatabase.sql](./sql/01-CreateDatabase.sql)
 - [02-CreateTable.sql](./sql/02-CreateTable.sql)
 - [03-DataLoadInTable.sql](./sql/03-DataLoadInTable.sql)
@@ -46,16 +46,3 @@ A rota [/callprice/originDDD/*{originDDD}*/destinationDDD/*{destinationDDD}*](./
 
 #### **Separar rotas por arquivo**
 Caso crie novas rotas e deseje colocar em arquivos separados, poderá ser criado novos arquivos em routers. Esses novos arquivos deverão ser configurados em [src/app.js](./src/app.js)
-
-
----
-TESTAR EM OUTRA MAQUINA
-### npm install --save sequelize
-
-### npm run start
-
-### npm install -g nodemon
-### npm install --save -dev nodemon
-
-### npm install --save mysql2
-----
